@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		stress_bar.visible = true # Barra vai aparecer
 	#print(area_ref)
 	
-	if estressado:
+	if estressado and not buying:
 		tempo_atual_estresse -= delta
 		stress_bar.value = tempo_atual_estresse
 		
@@ -85,21 +85,28 @@ func _process(delta: float) -> void:
 			elif next_slot != null and not next_slot.lista_drop.is_empty():
 				pass
 			else:
-					var slot_anterior = alvo_slot
-					alvo_slot = next_slot
-					if slot_anterior != null:
-						slot_anterior.lista_drop.erase(self)
-						
-					if alvo_slot == null:
-						fila = false
-						timer.start()
-						buying = true
-	
-func reset_stress_bar(amount: float) -> void:
+				var slot_anterior = alvo_slot
+				alvo_slot = next_slot
+				rescue_stress_bar(2.5)
+				if slot_anterior != null:
+					slot_anterior.lista_drop.erase(self)
+					
+				if alvo_slot == null:
+					fila = false
+					timer.start()
+					buying = true
+
+func rescue_stress_bar(amount: float) -> void: # Função para recuperar a barra de estresse
+	tempo_atual_estresse += amount
+	if tempo_atual_estresse > tempo_limite_dentro:
+		tempo_atual_estresse = tempo_limite_dentro
+	stress_bar.value = tempo_atual_estresse
+
+func reset_stress_bar(amount: float) -> void: # Função para resetar a barr de estresse
 	tempo_atual_estresse = amount
 	stress_bar.max_value = amount
 	stress_bar.value = amount
-	stress_bar.modulate = Color(1, 1, 1) # Reseta a cor
+	stress_bar.modulate = Color(0, 1, 0) # Reseta a cor
 
 # O que acontece quando o estresse acaba
 func game_over_patience() -> void:
@@ -124,6 +131,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		area.modulate = globalVar.transp_green
 		area_ref.push_front(area)
 		print(area_ref)
+		if stress_bar.max_value != tempo_limite_dentro: # Caso ele troca de fila
+			reset_stress_bar(tempo_limite_dentro) # reiniciei por conta que tem um tempo limite dentro
 		drop_atual = area_ref[0]
 		print("Drop Atual: ", drop_atual.name)
 
@@ -138,6 +147,9 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 				drop_atual = area_ref[0]
 			else:
 				drop_atual = null
+		if is_inside_drop == 0: # Caso ele saia da fila, o tempo renicia para o tempo fora.
+			if not globalVar.is_dragging:
+				reset_stress_bar(tempo_limite_fora)
 		
 		print("Drop Atual: ", drop_atual.name if drop_atual else "Nenhum")
 
@@ -146,6 +158,7 @@ func _on_timer_timeout() -> void:
 		if numProducts > 0:
 			numProducts -= 1
 			textlabel.text = str(numProducts)
+			#reset_stress_bar(tempo_atual_estresse) -> se quiser que a barra reinicie quando ele chegar no caixa, descomente essa linha
 			tempo_atual_estresse += 2.0
 			stress_bar.value = tempo_atual_estresse
 		else:
@@ -187,10 +200,4 @@ func dropping_logic() -> void:
 			tween.tween_property(self,"global_position",init_pos,0.2).set_ease(Tween.EASE_OUT)
 	else:
 		tween.tween_property(self,"global_position",init_pos,0.2).set_ease(Tween.EASE_OUT)
-	
-	
-		
-
-	
-	
-	
+		reset_stress_bar(tempo_limite_fora)
