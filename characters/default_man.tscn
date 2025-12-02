@@ -59,9 +59,9 @@ offset_bottom = 40.0
 
 [node name="StressBar" type="ProgressBar" parent="."]
 offset_left = -200.0
-offset_top = -545.0
+offset_top = -555.0
 offset_right = 205.0
-offset_bottom = -518.0
+offset_bottom = -510.0
 theme_override_styles/background = SubResource("StyleBoxFlat_y1l8h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xvdts")
 
