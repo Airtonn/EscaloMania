@@ -3,6 +3,7 @@ extends Node2D
 var velocity = 200
 var alvo_slot: drop_area = null
 var numProducts : int
+var purchase_value : int
 var draggable : bool = false
 var is_inside_drop : int = 0
 var area_ref : Array[Area2D]
@@ -27,6 +28,7 @@ var estressado = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	numProducts = randi_range(1,15)
+	purchase_value = numProducts * 10
 	textlabel.text = str(numProducts)
 	scale_init = scale
 	reset_stress_bar(tempo_limite_fora)
@@ -113,6 +115,7 @@ func game_over_patience() -> void:
 	print("O cliente ficou irritado e foi embora!")
 	estressado = false
 	finish = true # Faz ele ir embora
+	GlobalSignal.pontuacao.emit(-purchase_value)
 	# Talvez add um som o algo do tipo...
 	
 func _on_area_2d_mouse_entered() -> void:
@@ -168,6 +171,7 @@ func _on_timer_timeout() -> void:
 			
 			alvo_slot = null # Limpa a referência do drop
 			finish = true
+			GlobalSignal.pontuacao.emit(purchase_value)
 		
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
 	if finish:

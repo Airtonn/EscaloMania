@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://h60ahouxsbas"]
+[gd_scene load_steps=13 format=4 uid="uid://h60ahouxsbas"]
 
 [ext_resource type="Script" uid="uid://b4bp88v7ydee6" path="res://scenes/supermarket_level1.gd" id="1_2c0dq"]
 [ext_resource type="Texture2D" uid="uid://bx14a2k0fg2l" path="res://objects/removed/wall_remove.png" id="1_vi15o"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c2hs3io5caaas" path="res://objects/removed/estante1.png" id="5_grrqp"]
 [ext_resource type="PackedScene" uid="uid://8ak74s57j8f5" path="res://characters/default_man.tscn" id="5_h2doy"]
 [ext_resource type="Texture2D" uid="uid://cl2u1eof5xbet" path="res://objects/removed/estante2.png" id="6_kls3s"]
+[ext_resource type="PackedScene" uid="uid://n3ky5lby8br3" path="res://scenes/hud.tscn" id="8_jkob8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gt2a7"]
 texture = ExtResource("3_gt2a7")
@@ -4192,14 +4193,4 @@ shape = SubResource("RectangleShape2D_jkob8")
 position = Vector2(734, 418)
 zoom = Vector2(1.3, 1.3)
 
-[node name="quit" type="Button" parent="."]
-offset_left = 1192.0
-offset_top = 32.0
-offset_right = 1456.0
-offset_bottom = 128.0
-theme_override_colors/font_hover_color = Color(0.94902, 0, 0, 1)
-theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
-theme_override_font_sizes/font_size = 76
-text = "Sair"
-
-[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[node name="hud" parent="." instance=ExtResource("8_jkob8")]
