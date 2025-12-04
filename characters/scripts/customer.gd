@@ -37,7 +37,8 @@ func _process(delta: float) -> void:
 	
 	if finish:
 		position.x -= 5
-		stress_bar.visible = true # Barra vai aparecer
+		stress_bar.visible = false
+		draggable = false
 	#print(area_ref)
 	
 	if estressado and not buying:
@@ -118,6 +119,9 @@ func game_over_patience() -> void:
 	GlobalSignal.pontuacao.emit(-purchase_value)
 	# Talvez add um som o algo do tipo...
 	
+func walkToWait(posX: int):
+	position.x -= posX * 10
+
 func _on_area_2d_mouse_entered() -> void:
 	if not globalVar.is_dragging:
 		draggable = true
