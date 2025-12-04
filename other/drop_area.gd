@@ -4,8 +4,8 @@ extends Area2D
 @export var next_drop : Area2D
 
 #variavel usada para verificar quantos clientes estão em cima do drop
-@export var lista_drop : Array[Area2D]
-var lista_click : Array[Node2D]
+@export var lista_drop : Array
+var lista_click : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

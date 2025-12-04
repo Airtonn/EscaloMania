@@ -1,7 +1,6 @@
 extends Node2D
-class_name EnemySpawner
 
-@export var enemy : Array[PackedScene]
+@export var character : Array[PackedScene]
 @onready var timer : Timer = $cooldown
 
 func _ready() -> void:
@@ -9,7 +8,8 @@ func _ready() -> void:
 	timer.start(3)
 
 func _on_cooldown_timeout() -> void:
-	var enemyInstance : Node2D = enemy.pick_random().instantiate()
-	enemyInstance.z_index = 1
-	enemyInstance.global_position = global_position
-	get_parent().get_parent().add_child(enemyInstance)
+	var charInstance : Node2D = character.pick_random().instantiate()
+	charInstance.z_index = 1
+	charInstance.global_position = global_position
+	charInstance.add_to_group("client")
+	get_parent().add_child(charInstance)

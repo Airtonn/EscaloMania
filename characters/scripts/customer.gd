@@ -1,6 +1,6 @@
 extends Node2D
 
-var velocity = 100
+var velocity = 200
 var alvo_slot: drop_area = null
 var numProducts : int
 var purchase_value : int
