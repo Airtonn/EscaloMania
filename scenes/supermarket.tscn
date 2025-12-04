@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://h60ahouxsbas"]
+[gd_scene load_steps=12 format=4 uid="uid://h60ahouxsbas"]
 
 [ext_resource type="Script" uid="uid://b4bp88v7ydee6" path="res://scenes/supermarket_level1.gd" id="1_2c0dq"]
 [ext_resource type="Texture2D" uid="uid://bx14a2k0fg2l" path="res://objects/removed/wall_remove.png" id="1_vi15o"]
@@ -4112,12 +4112,6 @@ texture = ExtResource("3_gt2a7")
 [sub_resource type="TileSet" id="TileSet_reuu7"]
 sources/0 = SubResource("TileSetAtlasSource_gt2a7")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2doy"]
-size = Vector2(320, 675)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkob8"]
-size = Vector2(305, 675)
-
 [node name="supermarket" type="Node2D"]
 script = ExtResource("1_2c0dq")
 
@@ -4173,33 +4167,11 @@ tile_set = SubResource("TileSet_reuu7")
 [node name="default_man" parent="." instance=ExtResource("5_h2doy")]
 position = Vector2(391, 306)
 
-[node name="Area2D2" type="Area2D" parent="default_man" groups=["client"]]
-collision_layer = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="default_man/Area2D2"]
-position = Vector2(0, 187.5)
-shape = SubResource("RectangleShape2D_h2doy")
-debug_color = Color(0, 0.6, 0.69803923, 0.7176471)
-
 [node name="default_man2" parent="." instance=ExtResource("5_h2doy")]
 position = Vector2(622, 310)
 
-[node name="Area2D2" type="Area2D" parent="default_man2" groups=["client"]]
-collision_layer = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="default_man2/Area2D2"]
-position = Vector2(-2.5, 192.5)
-shape = SubResource("RectangleShape2D_jkob8")
-
 [node name="default_man3" parent="." instance=ExtResource("5_h2doy")]
 position = Vector2(790, 301)
-
-[node name="Area2D2" type="Area2D" parent="default_man3" groups=["client"]]
-collision_layer = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="default_man3/Area2D2"]
-position = Vector2(-2.5, 192.5)
-shape = SubResource("RectangleShape2D_jkob8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(734, 418)

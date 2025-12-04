@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8ak74s57j8f5"]
+[gd_scene load_steps=8 format=3 uid="uid://8ak74s57j8f5"]
 
 [ext_resource type="Texture2D" uid="uid://p4avhvplb101" path="res://characters/sprites/removed/man.png" id="1_ef3d6"]
 [ext_resource type="Script" uid="uid://cjq2xlnpp4c21" path="res://characters/scripts/customer.gd" id="1_y1l8h"]
@@ -11,6 +11,9 @@ size = Vector2(185, 640.001)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvdts"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1l8h"]
+size = Vector2(320, 675)
 
 [node name="default_man" type="Node2D" groups=["client"]]
 z_index = 1
@@ -69,6 +72,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_xvdts")
 [node name="TextStressBar" type="TextureProgressBar" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Area2D2" type="Area2D" parent="." groups=["client"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, 187.5)
+shape = SubResource("RectangleShape2D_y1l8h")
+debug_color = Color(0, 0.6, 0.69803923, 0.7176471)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
