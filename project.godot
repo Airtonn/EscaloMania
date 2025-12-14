@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="EscaloMania"
-run/main_scene="uid://h60ahouxsbas"
+config/version="0.1"
+run/main_scene="uid://c25klrmjcdjw8"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

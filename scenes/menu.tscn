@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://c25klrmjcdjw8"]
+
+[ext_resource type="Script" uid="uid://be8gx7x46vu7t" path="res://scenes/menu.gd" id="1_vjb58"]
+[ext_resource type="Texture2D" uid="uid://cbtn4i0jo4cdj" path="res://scenes/menu.png" id="1_yqeox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqeox"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhnvy"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_con2f"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ytvr"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_vjb58")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(698, 656)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_yqeox")
+region_enabled = true
+region_rect = Rect2(122.92714, 0, 1194.0322, 736)
+
+[node name="Menu2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(948, 145)
+scale = Vector2(1.2, 1.1679348)
+texture = ExtResource("1_yqeox")
+region_enabled = true
+region_rect = Rect2(144.94672, 19.077888, 1119.6267, 209.04422)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+offset_left = -14.0
+offset_top = -19.0
+offset_right = 1936.0
+offset_bottom = 1098.0
+color = Color(0.654902, 0.8666667, 0.93333334, 1)
+
+[node name="quit" type="Button" parent="CanvasLayer"]
+offset_left = 1456.0
+offset_top = 920.0
+offset_right = 1840.0
+offset_bottom = 1033.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqeox")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_4ytvr")
+text = "Sair"
+
+[node name="credits" type="Button" parent="CanvasLayer"]
+offset_left = 1456.0
+offset_top = 780.0
+offset_right = 1842.0
+offset_bottom = 893.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqeox")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_4ytvr")
+text = "  Creditos  "
+
+[node name="play" type="Button" parent="CanvasLayer"]
+offset_left = 1456.0
+offset_top = 640.0
+offset_right = 1842.0
+offset_bottom = 753.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 76
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqeox")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mhnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjb58")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_4ytvr")
+text = "  Jogar  "
+
+[connection signal="pressed" from="CanvasLayer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/play" to="." method="_on_play_pressed"]
