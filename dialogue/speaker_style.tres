@@ -43,6 +43,10 @@ scene = ExtResource("6_tm4tj")
 [sub_resource type="Resource" id="Resource_ohqnt"]
 script = ExtResource("2_qngqf")
 scene = ExtResource("7_qxltb")
+overrides = {
+"font_size_custom": "64.0",
+"font_size_use_global": "false"
+}
 
 [sub_resource type="Resource" id="Resource_wwql7"]
 script = ExtResource("2_qngqf")
@@ -66,4 +70,4 @@ layer_info = {
 "15": SubResource("Resource_wwql7"),
 "16": SubResource("Resource_bj2e2")
 }
-metadata/_latest_layer = "12"
+metadata/_latest_layer = "14"
