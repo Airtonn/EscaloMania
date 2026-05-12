@@ -9,13 +9,13 @@ var is_inside_drop : int = 0
 var area_ref : Array[Area2D]
 var drag_offset : Vector2
 var init_pos : Vector2
-var scale_init : Vector2 # variavel indicando a escala inicial do no cliente
-var finish : bool = false # booleano indicando se a funcao do cliente no supermercado esta finalizada ou nao (terminou de comprar ou esgotou a paciencia)
-var buying : bool = false # booleano indicando se o cliente esta no estado de realizar a compra ou nao
-var walk : bool = false # booleano indicando se o cliente esta se locomovendo ou nao
-var go_ahead: bool = false # booleano indicando se o cliente esta se locomovendo ou nao
-var fila : bool = false # booleano indicando se atualmente o cliente esta na fila ou nao
-var drop_atual: Area2D = null # variavel que representa o drop atual sobre o qual o cliente esta em contato
+var scale_init : Vector2 # escala inicial do no cliente
+var finish : bool = false # indica se a funcao do cliente no supermercado esta finalizada ou nao (terminou de comprar ou esgotou a paciencia)
+var buying : bool = false # indica se o cliente esta no estado de realizar a compra ou nao
+var walk : bool = false # indica se o cliente esta se locomovendo ou nao
+var go_ahead: bool = false # indica se o cliente esta se locomovendo ou nao
+var fila : bool = false # indica se atualmente o cliente esta na fila ou nao
+var drop_atual: Area2D = null # drop atual sobre o qual o cliente esta em contato
 @onready var textlabel = $text
 @onready var timer = $Timer
 @onready var stress_bar = $StressBar # Para a barra de estresse
